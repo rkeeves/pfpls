@@ -12,7 +12,7 @@ import javax.faces.view.ViewScoped;
 @ViewScoped
 public class IndexView {
 
-    private String hello = "hello";
+  private String hello = "hello";
 
-    private String world = "world";
+  private String world = "world";
 }
