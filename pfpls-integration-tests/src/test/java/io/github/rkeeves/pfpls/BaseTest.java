@@ -7,14 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public abstract class AbstractUiTest {
+public abstract class BaseTest {
 
   @Setter
   @LocalServerPort
   private Integer port;
 
   @BeforeEach
-  final void onBeforeEach() {
+  final void beforeEach() {
     Configuration.baseUrl = "http://localhost:" + port;
   }
 }

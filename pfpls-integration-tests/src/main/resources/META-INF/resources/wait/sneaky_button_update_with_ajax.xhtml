@@ -1,0 +1,26 @@
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns="http://www.w3c.org/1999/xhtml">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Index</title>
+    </h:head>
+    <h:body>
+        <h2>Ajax, without any indicator</h2>
+        <p>Click on button</p>
+        <p>Await ajax (server sleeps for 1 sec)</p>
+        <p>Click on button</p>
+        <p>Await ajax (server does NOT sleep)</p>
+        <p>You'll see the message turn from failed to passed</p>
+        <h:form id="pf_form">
+            <p:commandButton value="Trigger ajax" action="#{sneakyButtonUpdateWithAjaxView.onFirstButtonClick}" update="@form"
+                             rendered="#{sneakyButtonUpdateWithAjaxView.shouldDisplayFirst}"/>
+            <p:commandButton value="Trigger ajax" action="#{sneakyButtonUpdateWithAjaxView.onSecondButtonClick}" update="@form"
+                             rendered="#{!sneakyButtonUpdateWithAjaxView.shouldDisplayFirst}"/>
+            <h:outputText id="message" value="#{sneakyButtonUpdateWithAjaxView.message}"/>
+        </h:form>
+
+    </h:body>
+</f:view>
