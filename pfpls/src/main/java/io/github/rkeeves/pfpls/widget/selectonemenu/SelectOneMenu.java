@@ -1,7 +1,8 @@
 package io.github.rkeeves.pfpls.widget.selectonemenu;
 
-
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.cssClass;
+import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
 import static org.openqa.selenium.By.id;

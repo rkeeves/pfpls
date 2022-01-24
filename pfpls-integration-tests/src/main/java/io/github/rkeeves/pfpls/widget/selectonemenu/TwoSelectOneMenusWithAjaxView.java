@@ -18,11 +18,11 @@ import org.springframework.stereotype.Component;
 @ViewScoped
 public class TwoSelectOneMenusWithAjaxView {
 
-  private Map<String,Map<String,String>> secondsByFirsts = new HashMap<>();
+  private Map<String, Map<String, String>> secondsByFirsts = new HashMap<>();
   private String first;
   private String second;
-  private Map<String,String> firsts;
-  private Map<String,String> seconds;
+  private Map<String, String> firsts;
+  private Map<String, String> seconds;
 
   @PostConstruct
   public void init() {
@@ -39,7 +39,7 @@ public class TwoSelectOneMenusWithAjaxView {
 
   public void onFirstChange() throws InterruptedException {
     Thread.sleep(1000L);
-    if(first !=null && !first.equals("")) {
+    if (first != null && !first.equals("")) {
       seconds = secondsByFirsts.get(first);
     } else {
       seconds = new HashMap<>();
