@@ -1,0 +1,32 @@
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns="http://www.w3c.org/1999/xhtml">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Index</title>
+    </h:head>
+    <h:body>
+        <h2>Ajax dropdown</h2>
+
+        <h:form id="pf_form">
+            <p:panel style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="first" value="First: " />
+                    <p:selectOneMenu id="first" value="#{twoSelectOneMenusWithAjaxView.first}" style="width:150px">
+                        <p:ajax listener="#{twoSelectOneMenusWithAjaxView.onFirstChange}" update="second" />
+                        <f:selectItem itemLabel="Select First" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{twoSelectOneMenusWithAjaxView.firsts}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="second" value="Second: " />
+                    <p:selectOneMenu id="second" value="#{twoSelectOneMenusWithAjaxView.second}" style="width:150px">
+                        <f:selectItem itemLabel="Select Second" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{twoSelectOneMenusWithAjaxView.seconds}" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</f:view>
