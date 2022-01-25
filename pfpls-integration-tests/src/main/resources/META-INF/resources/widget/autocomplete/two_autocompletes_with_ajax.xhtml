@@ -1,0 +1,39 @@
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns="http://www.w3c.org/1999/xhtml">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Index</title>
+    </h:head>
+    <h:body>
+        <h2>Two autocompletes with ajax</h2>
+        <p>Type a char into the first autocomplete</p>
+        <p>Await ajax (server does sleep)</p>
+        <p>Select an li from the (floated in) span ul</p>
+        <p>Await ajax (server does sleep)</p>
+        <p>Type a char into the second autocomplete (options for the second are determine by the first)</p>
+        <p>Await ajax (server does sleep)</p>
+        <p>Select an li from the (floated in) span ul</p>
+        <p>Await ajax (server does sleep)</p>
+        <p>Confirm that the selected option was indeed selected</p>
+        <p>(It's difficult to exactly recreate the server side bug causing code if I have access only to client side behavior...)</p>
+        <p>(But I think they probably tried some db access optimization and hooked it up to a blur event or something)</p>
+        <h:form id="pf_form">
+            <p:panel style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:autoComplete id="first" value="#{twoAutoCompletesWithAjaxView.first}"
+                                    completeMethod="#{twoAutoCompletesWithAjaxView.provideSuggestionsForFirst}"
+                                    scrollHeight="100">
+                        <p:ajax event="blur" listener="#{twoAutoCompletesWithAjaxView.onFirstHasBeenSelected}"
+                                process="@form"/>
+                    </p:autoComplete>
+                    <p:autoComplete id="second" value="#{twoAutoCompletesWithAjaxView.second}"
+                                    completeMethod="#{twoAutoCompletesWithAjaxView.provideSuggestionsForSecond}"
+                                    scrollHeight="100"/>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</f:view>
