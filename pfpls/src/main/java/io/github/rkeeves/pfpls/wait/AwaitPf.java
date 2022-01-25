@@ -1,6 +1,5 @@
 package io.github.rkeeves.pfpls.wait;
 
-import java.lang.reflect.Method;
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
@@ -15,11 +14,6 @@ public class AwaitPf implements WebDriverListener {
   private final Duration waitTimeout;
 
   private final ExpectedCondition<Boolean> condition;
-
-  @Override
-  public void beforeAnyWebDriverCall(WebDriver driver, Method method, Object[] args) {
-    awaitTrue(driver);
-  }
 
   @Override
   public void beforeFindElement(WebDriver driver, By locator) {
