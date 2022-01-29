@@ -1,0 +1,26 @@
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns="http://www.w3c.org/1999/xhtml">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Index</title>
+    </h:head>
+    <h:body>
+        <h2>Datepicker</h2>
+        <p>Setting a field should empty the other field (server sleeps a bit)</p>
+        <h:form id="pf_form">
+            <p:panel style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:datePicker id="date" value="#{datePickerView.date}" pattern="yyyy.MM.dd.">
+                        <p:ajax event="change" listener="#{datePickerView.onDateChange()}" update="dateTime"/>
+                    </p:datePicker>
+                    <p:datePicker id="dateTime" value="#{datePickerView.dateTime}" showTime="true" pattern="yyyy.MM.dd.">
+                        <p:ajax event="change" listener="#{datePickerView.onDateTimeChange()}" update="date"/>
+                    </p:datePicker>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</f:view>
