@@ -10,15 +10,15 @@ import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.github.rkeeves.pfpls.BaseTest;
 import io.github.rkeeves.pfpls.PfPls;
+import io.github.rkeeves.pfpls.wait.AwaitPf;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.support.events.WebDriverListener;
 
 public class TwoSelectOneMenusWithAjaxTest extends BaseTest {
 
-  private static final WebDriverListener waitForPf = PfPls.createWaitForPf(Duration.of(5, ChronoUnit.SECONDS));
+  private static final AwaitPf awaitPf = PfPls.createWaitForPf(Duration.of(5, ChronoUnit.SECONDS));
 
   private static class TwoSelectOneMenusWithAjaxPage {
 
@@ -35,7 +35,7 @@ public class TwoSelectOneMenusWithAjaxTest extends BaseTest {
   @BeforeEach
   void resetDriver() {
     Selenide.closeWebDriver();
-    WebDriverRunner.removeListener(waitForPf);
+    WebDriverRunner.removeListener(awaitPf);
   }
 
   @Test
@@ -45,7 +45,7 @@ public class TwoSelectOneMenusWithAjaxTest extends BaseTest {
 
   @Test
   void performActions_withAwaitPf_shouldNotThrow() {
-    WebDriverRunner.addListener(waitForPf);
+    WebDriverRunner.addListener(awaitPf);
     performActions();
   }
 
