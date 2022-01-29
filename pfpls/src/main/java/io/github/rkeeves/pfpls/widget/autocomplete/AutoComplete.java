@@ -21,6 +21,7 @@ public class AutoComplete {
             .shouldBe(visible)
             .$("ul > li[data-item-label='" + selectedLabel + "']")
             .scrollIntoView(false);
+    spanUiAutoComplete.$("input").shouldHave(value(keyword));
     actions().moveToElement(li)
             .clickAndHold(li)
             .release(li)
@@ -28,6 +29,10 @@ public class AutoComplete {
             .perform();
     $(id(panelId))
             .shouldNotBe(visible);
+    spanUiAutoComplete.$("input").shouldHave(value(selectedLabel));
+  }
+
+  public void shouldHaveValue(final String selectedLabel) {
     spanUiAutoComplete.$("input").shouldHave(value(selectedLabel));
   }
 }

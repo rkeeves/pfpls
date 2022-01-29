@@ -26,8 +26,8 @@
                     <p:autoComplete id="first" value="#{twoAutoCompletesWithAjaxView.first}"
                                     completeMethod="#{twoAutoCompletesWithAjaxView.provideSuggestionsForFirst}"
                                     scrollHeight="100">
-                        <p:ajax event="blur" listener="#{twoAutoCompletesWithAjaxView.onFirstHasBeenSelected}"
-                                process="@form"/>
+                        <p:ajax event="itemSelect" listener="#{twoAutoCompletesWithAjaxView.onFirstHasBeenSelected}"
+                                process="@form" update="second"/>
                     </p:autoComplete>
                     <p:autoComplete id="second" value="#{twoAutoCompletesWithAjaxView.second}"
                                     completeMethod="#{twoAutoCompletesWithAjaxView.provideSuggestionsForSecond}"

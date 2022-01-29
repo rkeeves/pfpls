@@ -1,5 +1,6 @@
 package io.github.rkeeves.pfpls.widget.autocomplete;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -43,6 +44,10 @@ public class TwoAutoCompletesWithAjaxView {
 
   public List<String> provideSuggestionsForSecond(String prefix) throws InterruptedException {
     Thread.sleep(1000L);
+    System.out.println("FDSF : " + prefix);
+    if (prefix == null || prefix.isEmpty()) {
+      return new ArrayList<>();
+    }
     return secondSuggestions.stream()
             .filter(word -> word.startsWith(prefix))
             .collect(Collectors.toList());
@@ -50,6 +55,7 @@ public class TwoAutoCompletesWithAjaxView {
 
   public void onFirstHasBeenSelected(AjaxBehaviorEvent event) throws InterruptedException {
     Thread.sleep(1000L);
+    second = null;
     secondSuggestions = createSecondSuggestions(first);
   }
 
