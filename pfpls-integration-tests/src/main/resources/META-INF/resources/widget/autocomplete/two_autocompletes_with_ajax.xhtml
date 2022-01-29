@@ -18,8 +18,7 @@
         <p>Select an li from the (floated in) span ul</p>
         <p>Await ajax (server does sleep)</p>
         <p>Confirm that the selected option was indeed selected</p>
-        <p>(It's difficult to exactly recreate the server side bug causing code if I have access only to client side behavior...)</p>
-        <p>(But I think they probably tried some db access optimization and hooked it up to a blur event or something)</p>
+        <p>(Setting the first autocomplete updates the second value to null and rerenders the second autocomplete)</p>
         <h:form id="pf_form">
             <p:panel style="margin-bottom:10px;">
                 <h:panelGrid columns="2" cellpadding="5">
