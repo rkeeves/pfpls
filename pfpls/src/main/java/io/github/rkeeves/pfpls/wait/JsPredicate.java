@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 @RequiredArgsConstructor
 public class JsPredicate implements ExpectedCondition<Boolean> {
 
-  private final FileContent jsStatementReturningBoolean;
+  private final FileContent jsExpressionEvaluatingToBoolean;
 
   @Override
   public Boolean apply(WebDriver webDriver) {
@@ -17,7 +17,7 @@ public class JsPredicate implements ExpectedCondition<Boolean> {
       return false;
     }
     JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) webDriver;
-    final Object result = javaScriptExecutor.executeScript(jsStatementReturningBoolean.content());
+    final Object result = javaScriptExecutor.executeScript("return " + jsExpressionEvaluatingToBoolean.content() + ";");
     return Boolean.valueOf(result.toString());
   }
 }
